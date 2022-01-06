@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Docente {
     private int idNum;
     private String nome;
-    private Turma turmaAtual;
+    private String turmaAtual;
     private ArrayList<Disciplina> disciplinas;
 
     public Docente(int idNum, String nome) {
         this.idNum = idNum;
         this.nome = nome;
-        this.turmaAtual = null;
-        this.disciplinas = null;
+        this.turmaAtual = "";
+        this.disciplinas = new ArrayList<>();
     }
 
     public int getIdNum() {
@@ -31,11 +31,7 @@ public class Docente {
         this.nome = nome;
     }
 
-    public Turma getTurmaAtual() {
-        return turmaAtual;
-    }
-
-    public void setTurmaAtual(Turma turmaAtual) {
+    public void setTurmaAtual(String turmaAtual) {
         this.turmaAtual = turmaAtual;
     }
 

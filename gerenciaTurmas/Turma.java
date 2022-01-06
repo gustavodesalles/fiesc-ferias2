@@ -1,23 +1,32 @@
 package gerenciaTurmas;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Turma {
     private int identificacao;
     private String nome;
-    private HashMap<Integer, Disciplina> assuntos;
+    private ArrayList<Disciplina> assuntos;
     private int qtdAlunos;
     private LocalDate dataInicio;
+    int numSemana;
+
+    public int getNumSemana() {
+        return numSemana;
+    }
+
+    public void setNumSemana(int numSemana) {
+        this.numSemana = numSemana;
+    }
 
     public Turma(int identificacao, String nome, int qtdAlunos, LocalDate dataInicio) {
         this.identificacao = identificacao;
         this.nome = nome;
         this.qtdAlunos = qtdAlunos;
         this.dataInicio = dataInicio;
-        for (int i = 1; i <= 52; i++) {
-            this.assuntos.put(i, null);
-        }
+        this.assuntos = new ArrayList<>();
+        this.numSemana = 0;
     }
 
     public int getIdentificacao() {
@@ -36,11 +45,11 @@ public class Turma {
         this.nome = nome;
     }
 
-    public HashMap<Integer, Disciplina> getAssuntos() {
+    public ArrayList<Disciplina> getAssuntos() {
         return assuntos;
     }
 
-    public void setAssuntos(HashMap<Integer, Disciplina> assuntos) {
+    public void setAssuntos(ArrayList<Disciplina> assuntos) {
         this.assuntos = assuntos;
     }
 

@@ -2,11 +2,16 @@ package gerenciaTurmas;
 
 public class Disciplina {
     private String nomeDisciplina;
-    private Docente docente;
+    private String docente;
 
-    public Disciplina(String nomeDisciplina, Docente docente) {
+    public Disciplina(String nomeDisciplina, String docente) {
         this.nomeDisciplina = nomeDisciplina;
         this.docente = docente;
+    }
+
+    public Disciplina(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
+        this.docente = "TBD";
     }
 
     public String getNomeDisciplina() {
@@ -17,11 +22,11 @@ public class Disciplina {
         this.nomeDisciplina = nomeDisciplina;
     }
 
-    public Docente getDocente() {
+    public String getDocente() {
         return docente;
     }
 
-    public void setDocente(Docente docente) {
+    public void setDocente(String docente) {
         this.docente = docente;
     }
 }
