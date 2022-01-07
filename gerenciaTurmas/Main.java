@@ -88,6 +88,9 @@ public class Main {
         if (turma != null && docente != null && i <= turma.getAssuntos().size()) {
             Disciplina disciplina = turma.getAssuntos().get(i - 1);
             disciplina.setDocente(docente.getNome());
+
+            if (docente.getDisciplinas().isEmpty()) docente.setTurmaAtual(turma.getNome());
+
             docente.getDisciplinas().add(disciplina);
         } else {
             System.out.println("Não foi possível efetuar o processo.");
