@@ -3,15 +3,12 @@ package gerenciaTurmas;
 public class Disciplina {
     private String nomeDisciplina;
     private String docente;
+    private int semana;
 
-    public Disciplina(String nomeDisciplina, String docente) {
-        this.nomeDisciplina = nomeDisciplina;
-        this.docente = docente;
-    }
-
-    public Disciplina(String nomeDisciplina) {
+    public Disciplina(String nomeDisciplina, int semana) {
         this.nomeDisciplina = nomeDisciplina;
         this.docente = "TBD";
+        this.semana = semana;
     }
 
     public String getNomeDisciplina() {
@@ -28,5 +25,22 @@ public class Disciplina {
 
     public void setDocente(String docente) {
         this.docente = docente;
+    }
+
+    public int getSemana() {
+        return semana;
+    }
+
+    public void setSemana(int semana) {
+        this.semana = semana;
+    }
+
+    @Override
+    public String toString() {
+        return "Disciplina{" +
+                "nomeDisciplina='" + nomeDisciplina + '\'' +
+                ", docente='" + docente + '\'' +
+                ", semana=" + semana +
+                '}';
     }
 }

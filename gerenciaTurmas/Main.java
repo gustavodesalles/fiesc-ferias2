@@ -28,16 +28,36 @@ public class Main {
         if (turma.getNumSemana() >= 52) {
             System.out.println("Número máximo de semanas excedido.");
         } else {
+            scanner.nextLine();
             System.out.println("Digite o nome da disciplina: ");
             String nomeDisc = scanner.nextLine();
 
-            Disciplina disciplina = new Disciplina(nomeDisc);
             turma.numSemana++;
+            Disciplina disciplina = new Disciplina(nomeDisc, turma.getNumSemana());
             turma.getAssuntos().add(disciplina);
+            System.out.println("Disciplina criada!");
+        }
+    }
+
+    public static void alterarDisciplina(int nT, int nDisc) {
+        for (Turma t : turmas) {
+            if (nT == t.getIdentificacao()) {
+                for (Disciplina d : t.getAssuntos()) {
+                    if (nDisc == d.getSemana()) {
+                        scanner.nextLine();
+                        System.out.println("Digite o novo nome da disciplina: ");
+                        String novoNome = scanner.nextLine();
+
+                        d.setNomeDisciplina(novoNome);
+                        System.out.println("Disciplina alterada.");
+                    }
+                }
+            }
         }
     }
 
     public static void criarDocente() {
+        scanner.nextLine();
         System.out.println("Digite o nome do docente: ");
         String nome = scanner.nextLine();
 
@@ -65,9 +85,10 @@ public class Main {
     }
 
     public static void definirDocente(Turma turma, Docente docente, int i) {
-        if (turma != null && docente != null) {
-            Disciplina disciplina = turma.getAssuntos().get(i);
+        if (turma != null && docente != null && i <= turma.getAssuntos().size()) {
+            Disciplina disciplina = turma.getAssuntos().get(i - 1);
             disciplina.setDocente(docente.getNome());
+            docente.getDisciplinas().add(disciplina);
         } else {
             System.out.println("Não foi possível efetuar o processo.");
         }
@@ -77,11 +98,12 @@ public class Main {
         System.out.println("Selecione uma opção:");
         System.out.println("1 - Cadastrar turma");
         System.out.println("2 - Criar disciplina");
-        System.out.println("3 - Cadastrar docentes");
-        System.out.println("4 - Definir docentes para uma determinada turma");
-        System.out.println("5 - Listar turmas");
-        System.out.println("6 - Listar todos os docentes");
-        System.out.println("7 - Listar um docente e suas semanas");
+        System.out.println("3 - Alterar disciplina");
+        System.out.println("4 - Cadastrar docentes");
+        System.out.println("5 - Definir docentes para uma determinada turma");
+        System.out.println("6 - Listar turmas");
+        System.out.println("7 - Listar todos os docentes");
+        System.out.println("8 - Listar um docente e suas semanas");
         System.out.println("Digite qualquer outra tecla para sair.");
 
         int opcao = scanner.nextInt();
@@ -107,11 +129,34 @@ public class Main {
                     break;
                 }
             case 3:
+                if (turmas.isEmpty()) {
+                    System.out.println("Não há turmas.");
+                    main(null);
+                    break;
+                } else {
+                    System.out.println("Digite o número da turma: ");
+                    int numero = scanner.nextInt();
+
+                    System.out.println("Digite o número da semana: ");
+                    int numSemana = scanner.nextInt();
+
+                    alterarDisciplina(numero, numSemana);
+
+                    main(null);
+                    break;
+                }
+            case 4:
                 criarDocente();
 
                 main(null);
                 break;
-            case 4:
+            case 5:
+                if (numDocentes == 0) {
+                    System.out.println("Não há docentes.");
+                    main(null);
+                    break;
+                }
+
                 System.out.println("Digite o número da turma: ");
                 int numeroTurma = scanner.nextInt();
 
@@ -125,21 +170,27 @@ public class Main {
 
                 main(null);
                 break;
-            case 5:
+            case 6:
                 for (Turma t : turmas) {
                     System.out.println(t);
                 }
 
                 main(null);
                 break;
-            case 6:
+            case 7:
                 for (Docente d : docentes) {
                     System.out.println(d.getNome());
                 }
 
                 main(null);
                 break;
-            case 7:
+            case 8:
+                if (numDocentes == 0) {
+                    System.out.println("Não há docentes.");
+                    main(null);
+                    break;
+                }
+
                 System.out.println("Digite o número do docente: ");
                 int numero = scanner.nextInt();
 

@@ -35,6 +35,18 @@ public class Docente {
         this.turmaAtual = turmaAtual;
     }
 
+    public String getTurmaAtual() {
+        return turmaAtual;
+    }
+
+    public ArrayList<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
     @Override
     public String toString() {
         return "Docente{" +
