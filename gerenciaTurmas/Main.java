@@ -123,7 +123,7 @@ public class Main {
                     System.out.println("Digite o número da turma: ");
                     int numero = scanner.nextInt();
 
-                    criarDisciplina(obterTurma(numero));
+                    if (obterTurma(numero) != null) criarDisciplina(obterTurma(numero));
 
                     main(null);
                     break;
